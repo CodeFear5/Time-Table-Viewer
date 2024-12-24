@@ -6,7 +6,7 @@ export const checkClassFile = async (req, res) => {
   try {
     const { semester, section } = req.params;
     const file = await ClassFile.findOne({ semester, section });
-
+console.log("hello world");
     if (file) {
       res.status(200).json({ exists: true, file });
     } else {
