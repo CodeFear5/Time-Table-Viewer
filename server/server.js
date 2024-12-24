@@ -10,7 +10,6 @@ import labRoomRoutes from "./routes/labRoomRoutes.js";
 import staffNameRoutes from "./routes/staffNameRoutes.js";
 import classRoomRoutes from "./routes/classRoomRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
-
 dotenv.config();
 
 const app = express();
