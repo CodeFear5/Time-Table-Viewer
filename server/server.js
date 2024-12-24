@@ -32,8 +32,8 @@ app.use("/api/classRoom", classRoomRoutes); // Classrooms routes
 app.use("/api", authRoutes); // Authentication routes
 
 // Base route
-app.get("/", (req, res) => {
-  res.send("Welcome to the backend!");
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
 });
 
 // Start server
