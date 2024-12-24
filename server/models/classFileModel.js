@@ -1,3 +1,4 @@
+
 import mongoose from 'mongoose';
 
 const classFileSchema = new mongoose.Schema({
