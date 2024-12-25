@@ -29,7 +29,7 @@ const LabsDropdown = () => {
     setError("");
 
     try {
-      const response = await axios.get(`https://time-table-viewer-t8n7.vercel.app/staff/file/${teacherName}`);
+      const response = await axios.get(`https://time-table-viewer-t8n7.vercel.app/staff/file/Dr. Asha T`);
       if (response.data && response.data.file) {
         setFileDetails(response.data.file);
       } else {
