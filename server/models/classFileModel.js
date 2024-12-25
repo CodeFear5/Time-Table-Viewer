@@ -1,5 +1,4 @@
-
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const classFileSchema = new mongoose.Schema({
   semester: { type: String, required: true },
@@ -8,6 +7,6 @@ const classFileSchema = new mongoose.Schema({
   filePath: { type: String, required: true },
 });
 
-const ClassFile = mongoose.model('ClassFile', classFileSchema);
+const ClassFile = mongoose.model("ClassFile", classFileSchema);
 
 export default ClassFile;

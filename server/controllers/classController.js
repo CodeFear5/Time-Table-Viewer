@@ -6,7 +6,7 @@ export const checkClassFile = async (req, res) => {
   try {
     const { semester, section } = req.params;
     const file = await ClassFile.findOne({ semester, section });
-console.log("hello world");
+    console.log("hello world");
     if (file) {
       res.status(200).json({ exists: true, file });
     } else {
@@ -34,7 +34,10 @@ export const uploadClassFile = async (req, res) => {
     });
 
     await newFile.save();
-    res.status(201).json({ message: "Class timetable file uploaded successfully", file: newFile });
+    res.status(201).json({
+      message: "Class timetable file uploaded successfully",
+      file: newFile,
+    });
   } catch (error) {
     console.error("Error uploading class timetable file:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -64,7 +67,10 @@ export const editClassFile = async (req, res) => {
     existingFile.filePath = req.file.path;
     await existingFile.save();
 
-    res.status(200).json({ message: "Class timetable file updated successfully", file: existingFile });
+    res.status(200).json({
+      message: "Class timetable file updated successfully",
+      file: existingFile,
+    });
   } catch (error) {
     console.error("Error editing class timetable file:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -80,7 +86,7 @@ export const getClassFile = async (req, res) => {
       res.status(200).json({
         file: {
           name: path.basename(file.filePath),
-          url: `http://localhost:${process.env.PORT}/${file.filePath}`,
+          url: `${req.protocol}://${req.get("host")}/${file.filePath}`,
         },
       });
     } else {
