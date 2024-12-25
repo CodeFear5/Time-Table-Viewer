@@ -11,7 +11,7 @@ const LabsDropdown = () => {
 
   useEffect(() => {
     const fetchLabRooms = async () => {
-      const response = await axios.get("http://localhost:5000/api/labrooms");
+      const response = await axios.get("https://time-table-viewer-t8n7.vercel.app/api/labrooms");
       setLabRooms(response.data);
     };
   
@@ -29,7 +29,7 @@ const LabsDropdown = () => {
     setError("");
 
     try {
-      const response = await axios.get(`http://localhost:5000/staff/file/${teacherName}`);
+      const response = await axios.get(`https://time-table-viewer-t8n7.vercel.app/staff/file/${teacherName}`);
       if (response.data && response.data.file) {
         setFileDetails(response.data.file);
       } else {
@@ -53,7 +53,7 @@ const LabsDropdown = () => {
     }
   };
 
-  return (
+  return ( 
     <div className="bg-[#DDE5ED] pt-24 min-h-screen">
       <div className="w-full max-w-3xl mx-auto p-8 bg-[#FFFDF5] shadow-lg rounded-lg border border-[#F9A826]">
         <h1 className="text-2xl font-bold text-center text-[#3C4A3E] mb-6">
