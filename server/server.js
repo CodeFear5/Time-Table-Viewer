@@ -5,7 +5,7 @@ import dbConnection from "./utils/dbConnection.js";
 
 // Import Routes
 import teacherRoutes from "./routes/teacherRoutes.js";
-import classRoutes from "./routes/classRoutes.js";
+//import classRoutes from "./routes/classRoutes.js";
 import labRoomRoutes from "./routes/labRoomRoutes.js";
 import staffNameRoutes from "./routes/staffNameRoutes.js";
 import classRoomRoutes from "./routes/classRoomRoutes.js";
@@ -25,7 +25,7 @@ dbConnection();
 
 // Routes
 app.use("/staff", teacherRoutes); // Teacher routes
-app.use("/class", classRoutes); // Class timetable routes
+//app.use("/class", classRoutes); // Class timetable routes
 app.use("/api/labrooms", labRoomRoutes); // Lab room routes
 app.use("/api/staffnames", staffNameRoutes); // Staff names routes
 app.use("/api/classRoom", classRoomRoutes); // Classrooms routes
