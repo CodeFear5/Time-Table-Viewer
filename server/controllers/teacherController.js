@@ -76,7 +76,7 @@ export const getFile = async (req, res) => {
       res.status(200).json({
         file: {
           name: path.basename(file.filePath),
-          url: `http://localhost:${process.env.PORT}/${file.filePath}`,
+          url: `https://github.com/CodeFear5/Time-Table-Viewer/blob/main/server/${file.filePath}`,
         },
       });
     } else {
