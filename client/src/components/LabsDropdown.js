@@ -1,6 +1,5 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 
 const LabsDropdown = () => {
   const [selectedStaff, setSelectedStaff] = useState("");
@@ -17,6 +16,7 @@ const LabsDropdown = () => {
   
     fetchLabRooms();
   }, []);
+
   const handleChange = async (e) => {
     setSelectedStaff(e.target.value);
     await fetchFile(e.target.value);
@@ -53,7 +53,7 @@ const LabsDropdown = () => {
     }
   };
 
-  return ( 
+  return (
     <div className="bg-[#DDE5ED] pt-24 min-h-screen">
       <div className="w-full max-w-3xl mx-auto p-8 bg-[#FFFDF5] shadow-lg rounded-lg border border-[#F9A826]">
         <h1 className="text-2xl font-bold text-center text-[#3C4A3E] mb-6">
@@ -72,10 +72,10 @@ const LabsDropdown = () => {
         >
           <option value="">Choose a Lab Room...</option>
           {labRooms.map((room) => (
-  <option key={room._id} value={room.roomName}>
-    {room.roomName}
-  </option>
-))}
+            <option key={room._id} value={room.roomName}>
+              {room.roomName}
+            </option>
+          ))}
         </select>
 
         {loading && (
@@ -112,7 +112,7 @@ const LabsDropdown = () => {
 
             <div className="relative">
               <embed
-                src={fileDetails.url}
+                src={fileDetails.url} // Make sure this URL comes from Cloudinary or other proper storage
                 width="100%"
                 height="500px"
                 type="application/pdf"

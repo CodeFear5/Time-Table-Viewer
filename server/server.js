@@ -10,11 +10,17 @@ import labRoomRoutes from "./routes/labRoomRoutes.js";
 import staffNameRoutes from "./routes/staffNameRoutes.js";
 import classRoomRoutes from "./routes/classRoomRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import cloudinary from 'cloudinary';
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 app.use(cors({
   origin: ['https://time-table-viewer.vercel.app'],
   methods: 'GET,POST,PUT,DELETE', // Specify allowed HTTP methods
