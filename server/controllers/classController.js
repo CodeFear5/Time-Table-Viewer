@@ -1,23 +1,27 @@
-import ClassFile from "../models/ClassFileModel.js";
+// Updated ClassFile Controllers
+import ClassFile from "../models/ClassFileModel.js"; // Ensure this path works in your project setup
 import fs from "fs";
 import path from "path";
 
+// Check if Class File Exists
 export const checkClassFile = async (req, res) => {
   try {
     const { semester, section } = req.params;
     const file = await ClassFile.findOne({ semester, section });
-    console.log("hello world");
+    console.log("Checking file existence");
+
     if (file) {
       res.status(200).json({ exists: true, file });
     } else {
       res.status(200).json({ exists: false });
     }
   } catch (error) {
-    console.error("Error checking file:", error);
+    console.error("Error checking file existence:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
+// Upload Class File
 export const uploadClassFile = async (req, res) => {
   try {
     const { semester, section, category } = req.body;
@@ -44,6 +48,7 @@ export const uploadClassFile = async (req, res) => {
   }
 };
 
+// Edit Class File
 export const editClassFile = async (req, res) => {
   try {
     const fileId = req.params.id;
@@ -58,12 +63,15 @@ export const editClassFile = async (req, res) => {
       return res.status(400).json({ error: "File not provided" });
     }
 
+    // Update details
     if (semester) existingFile.semester = semester;
     if (section) existingFile.section = section;
     if (category) existingFile.category = category;
 
+    // Remove old file
     fs.unlinkSync(existingFile.filePath);
 
+    // Update file path
     existingFile.filePath = req.file.path;
     await existingFile.save();
 
@@ -77,6 +85,7 @@ export const editClassFile = async (req, res) => {
   }
 };
 
+// Get Class File
 export const getClassFile = async (req, res) => {
   try {
     const { semester, section } = req.params;

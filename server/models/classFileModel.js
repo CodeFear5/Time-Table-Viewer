@@ -8,5 +8,4 @@ const classFileSchema = new mongoose.Schema({
 });
 
 const ClassFile = mongoose.model("ClassFile", classFileSchema);
-
 export default ClassFile;
