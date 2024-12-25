@@ -1,5 +1,29 @@
 import cloudinary from 'cloudinary';
 import TeacherFile from '../models/teacherFileModel.js';
+import path from 'path'; // Ensure to import path
+
+// Check if file exists for the given teacher
+export const checkFile = async (req, res) => {
+  try {
+    const teacherName = req.params.teacherName;
+    const file = await TeacherFile.findOne({ teacherName });
+
+    if (file) {
+      res.status(200).json({
+        message: `File found for teacher: ${teacherName}`,
+        file: {
+          name: path.basename(file.filePath),
+          url: file.filePath, // Return the Cloudinary URL directly
+        },
+      });
+    } else {
+      res.status(404).json({ message: `No file found for teacher: ${teacherName}` });
+    }
+  } catch (error) {
+    console.error('Error checking file:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 
 // Upload file to Cloudinary
 export const uploadFile = async (req, res) => {
