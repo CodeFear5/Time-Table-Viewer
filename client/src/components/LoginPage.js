@@ -13,7 +13,7 @@ const LoginPage = () => {
     setLoginError(''); // Reset the error before making the request
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { email, password });
+      const response = await axios.post('https://time-table-viewer-t8n7.vercel.app/api/login', { email, password });
       localStorage.setItem('token', response.data.token); // Store token in localStorage
       navigate('/adminPanel');
     } catch (err) {
