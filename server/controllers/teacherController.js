@@ -76,7 +76,7 @@ export const getFile = async (req, res) => {
       res.status(200).json({
         file: {
           name: path.basename(file.filePath),
-          url: `http://localhost:${process.env.PORT}/${file.filePath}`,
+          url: `https://time-table-viewer.onrender.com/${file.filePath}`,
         },
       });
     } else {
