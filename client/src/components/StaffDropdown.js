@@ -13,7 +13,7 @@ const StaffDropdown = () => {
     const fetchStaffNames = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:5000/api/staffnames');
+        const response = await axios.get('https://time-table-viewer.onrender.com/api/staffnames');
         const staffData = response.data.map(staff => ({
           value: staff.staffName,
           label: staff.staffName,
@@ -41,7 +41,7 @@ const StaffDropdown = () => {
     setError("");
 
     try {
-      const response = await axios.get(`http://localhost:5000/staff/file/${teacherName}`);
+      const response = await axios.get(`https://time-table-viewer.onrender.com/staff/file/${teacherName}`);
       if (response.data && response.data.file) {
         setFileDetails(response.data.file);
       } else {
