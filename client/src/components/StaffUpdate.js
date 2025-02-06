@@ -15,7 +15,7 @@ const StaffUpdate = () => {
   // Fetch all staff names from the backend
   const fetchStaffNames = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/staffnames");
+      const response = await axios.get("https://time-table-viewer.onrender.com/api/staffnames");
       setStaffNames(response.data);
     } catch (error) {
       console.error("Error fetching staff names:", error);
@@ -29,7 +29,7 @@ const StaffUpdate = () => {
   // Add a new staff name
   const addStaffName = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/staffnames", { staffName });
+      const response = await axios.post("https://time-table-viewer.onrender.com/api/staffnames", { staffName });
       setStaffNames([...staffNames, response.data]);
       setStaffName(""); // Reset the input field after adding
       toast.success("Staff name added successfully!"); // Success toast
@@ -47,7 +47,7 @@ const StaffUpdate = () => {
 
   const saveStaffName = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/staffnames/${staffIdToSave}`, {
+      const response = await axios.put(`https://time-table-viewer.onrender.com/api/staffnames/${staffIdToSave}`, {
         staffName: editStaffName,
       });
       setStaffNames(staffNames.map((staff) => (staff._id === staffIdToSave ? response.data : staff)));
@@ -64,7 +64,7 @@ const StaffUpdate = () => {
   // Delete the staff name
   const deleteStaffName = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/staffnames/${deleteId}`);
+      await axios.delete(`https://time-table-viewer.onrender.com/api/staffnames/${deleteId}`);
       setStaffNames(staffNames.filter((staff) => staff._id !== deleteId));
       setShowConfirmDelete(false); // Close delete confirmation
       setDeleteId(null);

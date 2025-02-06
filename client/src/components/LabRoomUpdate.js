@@ -13,7 +13,7 @@ const LabRoomUpdate = () => {
   // Fetch lab rooms
   const fetchLabRooms = async () => {
     try {
-      const response = await axios.get("https://time-table-viewer-t8n7.vercel.app/api/labrooms");
+      const response = await axios.get("https://time-table-viewer.onrender.com/api/labrooms");
       setLabRooms(response.data);
     } catch (error) {
       console.error("Error fetching lab rooms:", error);
@@ -32,7 +32,7 @@ const LabRoomUpdate = () => {
       return;
     }
     try {
-      const response = await axios.post("https://time-table-viewer-t8n7.vercel.app/api/labrooms", { roomName });
+      const response = await axios.post("https://time-table-viewer.onrender.com/api/labrooms", { roomName });
       setLabRooms([...labRooms, response.data]);
       setRoomName("");
       toast.success("Lab room added successfully");
@@ -58,7 +58,7 @@ const deleteLabRoom = async () => {
           onClick={async () => {
             toast.dismiss(t.id); // Close the toast immediately
             try {
-              await axios.delete(`https://time-table-viewer-t8n7.vercel.app/api/labrooms/${roomToDelete}`);
+              await axios.delete(`https://time-table-viewer.onrender.com/api/labrooms/${roomToDelete}`);
               setLabRooms(labRooms.filter((room) => room._id !== roomToDelete));
               toast.success("Lab room deleted successfully");
             } catch (error) {
@@ -96,7 +96,7 @@ const editLabRoom = async () => {
           onClick={async () => {
             toast.dismiss(t.id); // Close the toast immediately
             try {
-              await axios.put(`https://time-table-viewer-t8n7.vercel.app/api/labrooms/${roomToSave}`, {
+              await axios.put(`https://time-table-viewer.onrender.com/api/labrooms/${roomToSave}`, {
                 roomName: editRoomName,
               });
               setLabRooms(

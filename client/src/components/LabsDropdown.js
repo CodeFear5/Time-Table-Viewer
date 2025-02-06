@@ -10,7 +10,7 @@ const LabsDropdown = () => {
 
   useEffect(() => {
     const fetchLabRooms = async () => {
-      const response = await axios.get("https://time-table-viewer-t8n7.vercel.app/api/labrooms");
+      const response = await axios.get("https://time-table-viewer.onrender.com/api/labrooms");
       setLabRooms(response.data);
     };
   
@@ -29,7 +29,7 @@ const LabsDropdown = () => {
     setError("");
 
     try {
-      const response = await axios.get(`https://time-table-viewer-t8n7.vercel.app/staff/file/Dr. Asha T`);
+      const response = await axios.get(`https://time-table-viewer.onrender.com/staff/file/${teacherName}`);
       if (response.data && response.data.file) {
         setFileDetails(response.data.file);
       } else {

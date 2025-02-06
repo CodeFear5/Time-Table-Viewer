@@ -15,7 +15,7 @@ const StaffUpload = () => {
   useEffect(() => {
     const fetchTeacherNames = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/staffnames");
+        const response = await axios.get("https://time-table-viewer.onrender.com/api/staffnames");
         const teachers = response.data.map((teacher) => ({
           value: teacher.staffName,
           label: teacher.staffName,
@@ -41,7 +41,7 @@ const StaffUpload = () => {
   const checkIfFileExists = async (teacherName) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/staff/check-file/${teacherName}`
+        `https://time-table-viewer.onrender.com/staff/check-file/${teacherName}`
       );
       if (response.data.exists) {
         setFileExists(true);
@@ -85,8 +85,8 @@ const StaffUpload = () => {
     try {
       // If file exists, we update it
       const url = fileExists
-        ? `http://localhost:5000/staff/edit/${existingFile._id}`
-        : `http://localhost:5000/staff/upload`;
+        ? `https://time-table-viewer.onrender.com/staff/edit/${existingFile._id}`
+        : `https://time-table-viewer.onrender.com/staff/upload`;
 
       const response = await axios.post(url, formData, {
         headers: {

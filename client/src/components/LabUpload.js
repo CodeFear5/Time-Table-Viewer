@@ -15,7 +15,7 @@ const LabUpload = () => {
   useEffect(() => {
     const fetchLabRooms = async () => {
       try {
-        const response = await axios.get("https://time-table-viewer-t8n7.vercel.app/api/labrooms");
+        const response = await axios.get("https://time-table-viewer.onrender.com/api/labrooms");
         const rooms = response.data.map((room) => ({
           value: room.roomName, // Assuming the room object has a 'name' field
           label: room.roomName, // Assuming the room object has a 'name' field
@@ -40,7 +40,7 @@ const LabUpload = () => {
   const checkIfFileExists = async (teacherName) => {
     try {
       const response = await axios.get(
-        `https://time-table-viewer-t8n7.vercel.app/staff/check-file/${teacherName}`
+        `https://time-table-viewer.onrender.com/staff/check-file/${teacherName}`
       );
       if (response.data.exists) {
         setFileExists(true);
@@ -83,8 +83,8 @@ const LabUpload = () => {
 
     try {
       const url = fileExists
-        ? `https://time-table-viewer-t8n7.vercel.app/staff/edit/${existingFile._id}`
-        : `https://time-table-viewer-t8n7.vercel.app/staff/upload`;
+        ? `https://time-table-viewer.onrender.com/staff/edit/${existingFile._id}`
+        : `https://time-table-viewer.onrender.com/staff/upload`;
 
       const response = await axios.post(url, formData, {
         headers: {

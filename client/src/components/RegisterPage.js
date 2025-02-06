@@ -13,7 +13,7 @@ const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/register', {
+      const response = await axios.post('https://time-table-viewer.onrender.com/api/register', {
         username,
         email,
         password,

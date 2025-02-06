@@ -26,7 +26,7 @@ const ClassUpload = () => {
       if (selectedSemester && selectedSection) {
         try {
           const response = await axios.get(
-            `http://localhost:5000/class/check-file/${encodeURIComponent(selectedSemester.label)}/${encodeURIComponent(selectedSection.label)}`
+            `https://time-table-viewer.onrender.com/class/check-file/${encodeURIComponent(selectedSemester.label)}/${encodeURIComponent(selectedSection.label)}`
           );
           setFileExists(response.data.exists);
         } catch (error) {
@@ -75,7 +75,7 @@ const ClassUpload = () => {
     formData.append("category", "timetable");
 
     try {
-      const response = await axios.post("http://localhost:5000/class/upload", formData, {
+      const response = await axios.post("https://time-table-viewer.onrender.com/class/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

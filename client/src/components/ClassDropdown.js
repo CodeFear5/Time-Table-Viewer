@@ -37,7 +37,7 @@ const ClassDropdown = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/class/file/${encodeURIComponent(selectedSemester)}/${encodeURIComponent(selectedSection)}`
+        `https://time-table-viewer.onrender.com/class/file/${encodeURIComponent(selectedSemester)}/${encodeURIComponent(selectedSection)}`
       );
       if (response.data && response.data.file) {
         setFileDetails(response.data.file);

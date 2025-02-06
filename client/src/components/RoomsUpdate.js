@@ -17,7 +17,7 @@ const RoomsUpdate = () => {
   // Fetch all classrooms on initial load
   const fetchClassrooms = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/classRoom");
+      const response = await axios.get("https://time-table-viewer.onrender.com/api/classRoom");
       setClassRooms(response.data);
     } catch (error) {
       console.error("Error fetching classrooms:", error);
@@ -32,7 +32,7 @@ const RoomsUpdate = () => {
   const addClassRoom = async () => {
     if (!roomName) return; // Don't add if room name is empty
     try {
-      const response = await axios.post("http://localhost:5000/api/classRoom", { ClassRoom: roomName });
+      const response = await axios.post("https://time-table-viewer.onrender.com/api/classRoom", { ClassRoom: roomName });
       setClassRooms([...classRooms, response.data]);
       setRoomName(""); // Reset input field after adding
       toast.success("Classroom added successfully!"); // Toast for success
@@ -45,7 +45,7 @@ const RoomsUpdate = () => {
   // Delete classroom with confirmation
   const deleteClassRoom = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/classRoom/${currentActionId}`);
+      await axios.delete(`https://time-table-viewer.onrender.com/api/classRoom/${currentActionId}`);
       setClassRooms(classRooms.filter((room) => room._id !== currentActionId)); // Remove from state
       toast.success("Classroom deleted successfully!"); // Toast for success
       setShowConfirmDelete(false); // Close confirmation
@@ -60,7 +60,7 @@ const RoomsUpdate = () => {
     if (!editRoomName) return; // Don't update if room name is empty
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/classRoom/${currentActionId}`, {
+      const response = await axios.put(`https://time-table-viewer.onrender.com/api/classRoom/${currentActionId}`, {
         ClassRoom: editRoomName,
       });
       setClassRooms(classRooms.map((room) => (room._id === currentActionId ? response.data : room)));

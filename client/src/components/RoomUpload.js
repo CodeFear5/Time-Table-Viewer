@@ -15,7 +15,7 @@ const RoomUpload = () => {
   useEffect(() => {
     const fetchClassrooms = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/classRoom");
+        const response = await axios.get("https://time-table-viewer.onrender.com/api/classRoom");
         const rooms = response.data.map((room) => ({
           value: room._id, // Assuming each room has an _id field
           label: room.ClassRoom, // Use ClassRoom as the label
@@ -39,7 +39,7 @@ const RoomUpload = () => {
   const checkIfFileExists = async (teacherName) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/staff/check-file/${teacherName}`
+        `https://time-table-viewer.onrender.com/staff/check-file/${teacherName}`
       );
       if (response.data.exists) {
         setFileExists(true);
@@ -82,8 +82,8 @@ const RoomUpload = () => {
 
     try {
       const url = fileExists
-        ? `http://localhost:5000/staff/edit/${existingFile._id}`
-        : `http://localhost:5000/staff/upload`;
+        ? `https://time-table-viewer.onrender.com/staff/edit/${existingFile._id}`
+        : `https://time-table-viewer.onrender.com/staff/upload`;
 
       const response = await axios.post(url, formData, {
         headers: {
