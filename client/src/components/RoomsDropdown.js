@@ -34,7 +34,7 @@ const RoomsDropDown = () => {
     setError("");
 
     try {
-      const response = await axios.get(`http://localhost:5000/staff/file/${classRoomName}`);  // Fetch file details
+      const response = await axios.get(`https://time-table-viewer.onrender.com/staff/file/${classRoomName}`);  // Fetch file details
       if (response.data && response.data.file) {
         setFileDetails(response.data.file);
       } else {
