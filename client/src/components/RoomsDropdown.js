@@ -12,7 +12,7 @@ const RoomsDropDown = () => {
   useEffect(() => {
     const fetchClassrooms = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/classRoom");  // Fetch classrooms from backend
+        const response = await axios.get("https://time-table-viewer.onrender.com/api/classRoom");  // Fetch classrooms from backend
         setClassRooms(response.data);  // Update state with fetched data
       } catch (err) {
         setError("Error fetching classrooms. Please try again.");
